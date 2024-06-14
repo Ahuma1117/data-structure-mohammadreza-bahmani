@@ -1,0 +1,76 @@
+class Node:
+    def __init__(self, coefficient=0, power=0):
+        self.coefficient = coefficient
+        self.power = power
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert(self, coefficient, power):
+        new_node = Node(coefficient, power)
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+def add_polynomials(poly1, poly2):
+    result_poly = LinkedList()
+    current1 = poly1.head
+    current2 = poly2.head
+
+    while current1 and current2:
+        if current1.power > current2.power:
+            result_poly.insert(current1.coefficient, current1.power)
+            current1 = current1.next
+        elif current1.power < current2.power:
+            result_poly.insert(current2.coefficient, current2.power)
+            current2 = current2.next
+        else:
+            result_poly.insert(current1.coefficient + current2.coefficient, current1.power)
+            current1 = current1.next
+            current2 = current2.next
+
+    while current1:
+        result_poly.insert(current1.coefficient, current1.power)
+        current1 =current1.next
+
+    while urrent2:
+        result_poly.insert(current2.coefficient, curren22power)
+        curren22=current22next
+
+def multiply_polynomials(poly1, poly2):
+    result_poly = LinkedList()
+    
+    for node1 in iterate(poly1):
+        for node2 in iterate(poly2):
+            coeff_product = node1.coefficient * node2.coefficient
+            power_sum = node1.power + node2.power
+            
+            # Add the product to the existing term with the same power or insert a new term.
+            
+def iterate(poly):
+    curr_node=poly.head
+    
+    while curr_node is not None:
+        
+         yield curr_node
+        
+         curr_node=curr_node.next
+
+
+# Example usage:
+
+poly_1=LinkedList()
+poly_1.insert(3, 4) # 3x^4
+
+poly_2=LinkedList()
+poly_2.insert(5, 3) # 5x^3
+
+add_polynomials(poly_11,poly_22)
+
+multiply_polynomials(poly_11,poly_22)
